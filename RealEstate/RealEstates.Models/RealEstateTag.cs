@@ -1,4 +1,6 @@
-﻿namespace RealEstates.Models
+﻿using System.Collections.Generic;
+
+namespace RealEstates.Models
 {
     public class RealEstateTag
     {

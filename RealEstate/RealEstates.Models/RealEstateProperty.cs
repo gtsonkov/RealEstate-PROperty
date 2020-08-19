@@ -1,7 +1,16 @@
-﻿namespace RealEstates.Models
+﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+
+namespace RealEstates.Models
 {
     public class RealEstateProperty
     {
+        public RealEstateProperty()
+        {
+            this.Tags = new HashSet<RealEstateTag>();
+        }
+
+        [Key]
         public int Id { get; set; }
 
         public int Size { get; set; }
@@ -23,5 +32,7 @@
         public int BuildingTypeId { get; set; }
 
         public virtual BuildingType BuildingType { get; set; }
+
+        public virtual ICollection<RealEstateTag> Tags { get; set; }
     }
 }
