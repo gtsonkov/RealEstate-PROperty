@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <OutputType>Exe</OutputType>
@@ -7,6 +7,12 @@
 
   <ItemGroup>
     <ProjectReference Include="..\RealEstates.Services\RealEstates.Services.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="ImportData\imot.bg-raw-data-2020-07-23.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 
 </Project>
