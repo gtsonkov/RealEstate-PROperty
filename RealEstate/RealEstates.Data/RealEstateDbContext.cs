@@ -6,6 +6,17 @@ namespace RealEstates.Data
 {
     public class RealEstateDbContext : DbContext
     {
+        public RealEstateDbContext()
+        {
+
+        }
+
+        public RealEstateDbContext(DbContextOptions options)
+            :base (options)
+        {
+
+        }
+
         public DbSet<RealEstateProperty> RealEstateProperties { get; set; }
 
         public DbSet<BuildingType> BuildingTypes { get; set; }
