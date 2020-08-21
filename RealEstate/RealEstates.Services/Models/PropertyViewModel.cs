@@ -8,11 +8,11 @@
 
         public string PropertyType { get; set; }
 
-        public int Price { get; set; }
+        public decimal Price { get; set; }
 
         public int Size { get; set; }
 
-        public int Year { get; set; }
+        public int? Year { get; set; }
 
         public string Floor { get; set; }
     }

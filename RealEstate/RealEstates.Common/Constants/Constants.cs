@@ -1,4 +1,6 @@
-﻿namespace RealEstates.Common.Constants
+﻿using System.Collections.Generic;
+
+namespace RealEstates.Common.Constants
 {
     public static class Constants
     {
