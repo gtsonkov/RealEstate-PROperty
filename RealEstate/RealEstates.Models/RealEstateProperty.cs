@@ -15,6 +15,8 @@ namespace RealEstates.Models
 
         public int Size { get; set; }
 
+        public decimal Price { get; set; }
+
         public int? Floor { get; set; }
 
         public int? TotalNumberOfFloors { get; set; }
