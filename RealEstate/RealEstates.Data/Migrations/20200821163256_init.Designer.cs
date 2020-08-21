@@ -10,7 +10,7 @@ using RealEstates.Data;
 namespace RealEstates.Data.Migrations
 {
     [DbContext(typeof(RealEstateDbContext))]
-    [Migration("20200820194144_init")]
+    [Migration("20200821163256_init")]
     partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -84,6 +84,9 @@ namespace RealEstates.Data.Migrations
                         .HasColumnType("int");
 
                     b.Property<int?>("Floor")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Price")
                         .HasColumnType("int");
 
                     b.Property<int>("PropertyTypeId")

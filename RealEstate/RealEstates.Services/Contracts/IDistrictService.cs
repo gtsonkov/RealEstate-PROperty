@@ -8,6 +8,6 @@ namespace RealEstates.Services.Contracts
     {
         public IEnumerable<DistrictVievModel> GetTopDistrictsByAveragePrice(int count = Constants.DistinctsCount);
 
-        public IEnumerable<DistrictVievModel> GetTopDistrictsNumberOfProperties();
+        public IEnumerable<DistrictVievModel> GetTopDistrictsNumberOfProperties(int count = Constants.DistinctsCount);
     }
 }

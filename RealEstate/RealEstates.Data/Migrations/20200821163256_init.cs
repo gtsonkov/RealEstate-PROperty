@@ -66,6 +66,7 @@ namespace RealEstates.Data.Migrations
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Size = table.Column<int>(nullable: false),
+                    Price = table.Column<int>(nullable: false),
                     Floor = table.Column<int>(nullable: true),
                     TotalNumberOfFloors = table.Column<int>(nullable: true),
                     DistrictId = table.Column<int>(nullable: false),

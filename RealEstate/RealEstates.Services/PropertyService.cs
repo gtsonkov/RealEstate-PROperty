@@ -17,8 +17,14 @@ namespace RealEstates.Services
             this._db = dbContext;
         }
 
-        public void Create(int size, int? floor, int? maxFloorCount, string distinct, string propertyType, string buildingType, int? year, int price)
+        public void Create(int size, int? floor, int? maxFloorCount, string district, string propertyType, string buildingType, int? year, int price)
         {
+
+            if (district == null)
+            {
+                return;
+            }
+
             var property = new RealEstateProperty
             {
                 Size = size,
@@ -48,13 +54,13 @@ namespace RealEstates.Services
             //Distrinct
 
             var currDistrict = this._db.Districts
-                                        .FirstOrDefault(x => x.Name.Trim() == distinct.Trim());
+                                        .FirstOrDefault(x => x.Name.Trim() == district.Trim());
 
             if (currDistrict == null)
             {
                 currDistrict = new District
                 {
-                    Name = distinct,
+                    Name = district,
                 };
             }
 
@@ -96,9 +102,11 @@ namespace RealEstates.Services
             #endregion
 
             this._db.Add(property);
-            this._db.SaveChanges();
+        }
 
-            this.UpdateTags(property.Id); //After Save Changes this Property already have an Id.
+        public void SaveChanges()
+        {
+            this._db.SaveChanges();
         }
 
         public IEnumerable<PropertyViewModel> Search(int minYear, int maxYear, int minSize, int maxSize)
