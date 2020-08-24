@@ -5,9 +5,13 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using RealEstates.Data;
+using RealEstates.Services;
+using RealEstates.Services.Contracts;
 
 namespace RealEstates.Web
 {
@@ -23,6 +27,14 @@ namespace RealEstates.Web
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+
+            services.AddDbContext<RealEstateDbContext>(op =>
+            {
+                op.UseSqlServer(this.Configuration["ConnectionString"]);
+            }); //Options can be changed
+
+            services.AddTransient<IDistrictService, DistrictService>();
+            services.AddTransient<IPropertiesService, PropertyService>();
             services.AddControllersWithViews();
         }
 
