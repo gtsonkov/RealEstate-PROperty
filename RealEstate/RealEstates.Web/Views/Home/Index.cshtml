@@ -1,4 +1,5 @@
-﻿@{
+﻿@model IEnumerable<RealEstates.Services.Models.DistrictVievModel>
+@{
     ViewData["Title"] = "Home Page";
 }
 
@@ -6,3 +7,21 @@
     <h1 class="display-4">Welcome</h1>
     <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
 </div>
+<table class="table table-striped table-hover">
+    <tr>
+        <th>District</th>
+        <th>Avg. proce</th>
+        <th>Min. Price</th>
+        <th>Max. Price</th>
+    </tr>
+    @foreach (var prop in this.Model)
+    {
+        <tr>
+            <td>@prop.Name</td>
+            <td>@prop.AveragePrice.ToString("F2") -EUR</td>
+            <td>@prop.MinPrice -EUR</td>
+            <td>@prop.MaxPrice -EUR</td>
+        </tr>
+    }
+
+</table>

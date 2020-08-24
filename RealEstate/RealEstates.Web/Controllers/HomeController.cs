@@ -1,26 +1,24 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
+﻿using Microsoft.AspNetCore.Mvc;
+using RealEstates.Services.Contracts;
 using RealEstates.Web.Models;
+using System.Diagnostics;
 
 namespace RealEstates.Web.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
+        private readonly IDistrictService _districtService;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(IDistrictService districtService)
         {
-            _logger = logger;
+            this._districtService = districtService;
         }
 
         public IActionResult Index()
         {
-            return View();
+            var districts = this._districtService.GetTopDistrictsByAveragePrice();
+
+            return View(districts);
         }
 
         public IActionResult Privacy()

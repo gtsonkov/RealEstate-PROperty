@@ -5,6 +5,7 @@ using RealEstates.Services.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 
 namespace RealEstates.Services
 {
@@ -25,8 +26,6 @@ namespace RealEstates.Services
 
         public void Create(int size, int? floor, int? maxFloorCount, string district, string propertyType, string buildingType, int? year, int price)
         {
-            
-
             if (district == null)
             {
                 return;
@@ -125,7 +124,7 @@ namespace RealEstates.Services
         {
             return _db.RealEstateProperties
                .Where(rp => rp.Year >= minYear && rp.Year <= maxYear && rp.Size >= minSize && rp.Size <= maxSize)
-               .Select(x => MapPropertyView(x))
+               .Select(MapPropertyView())
                .OrderBy(x => x.Year)
                .ThenBy(x => x.Size)
                .ToList();
@@ -134,7 +133,7 @@ namespace RealEstates.Services
         public IEnumerable<PropertyViewModel> SearchByPrice(int minPrice, int maxPrice)
         {
             return this._db.RealEstateProperties.Where(rp => rp.Price >= minPrice && rp.Price <= maxPrice)
-                .Select(x => MapPropertyView(x))
+                .Select(MapPropertyView())
                 .OrderBy(x => x.Price)
                 .ToList();
         }
@@ -192,9 +191,9 @@ namespace RealEstates.Services
             return currTag;
         }
 
-        private static PropertyViewModel MapPropertyView(RealEstateProperty x)
+        private static Expression<Func<RealEstateProperty, PropertyViewModel>> MapPropertyView()
         {
-            return new PropertyViewModel()
+            return x =>  new PropertyViewModel()
             {
                 BuildingType = x.BuildingType.Name,
                 District = x.District.Name,

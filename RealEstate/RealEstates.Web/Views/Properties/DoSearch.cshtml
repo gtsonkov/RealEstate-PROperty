@@ -1,0 +1,30 @@
+﻿@model IEnumerable<RealEstates.Services.Models.PropertyViewModel>
+@{
+    ViewData["Title"] = "DoSearch";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>DoSearch</h1>
+<table class="table table-striped table-hover">
+    <tr>
+        <th>District</th>
+        <th>Building type</th>
+        <th>Property type</th>
+        <th>Price</th>
+        <th>Year</th>
+        <th>Size</th>
+        <th>Floor</th>
+    </tr>
+    @foreach (var prop in this.Model)
+    {
+        <tr>
+            <td>@prop.District</td>
+            <td>@prop.BuildingType</td>
+            <td>@prop.PropertyType</td>
+            <td>@prop.Price -EUR</td>
+            <td>@prop.Year</td>
+            <td>@prop.Size m<sup>2</sup> </td>
+            <td>@prop.Floor</td>
+        </tr>
+    }
+</table>>

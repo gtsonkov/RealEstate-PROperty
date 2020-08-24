@@ -31,7 +31,7 @@ namespace RealEstates.Web
             services.AddDbContext<RealEstateDbContext>(op =>
             {
                 op.UseSqlServer(this.Configuration["ConnectionString"]);
-            }); //Options can be changed
+            }); //Options can
 
             services.AddTransient<IDistrictService, DistrictService>();
             services.AddTransient<IPropertiesService, PropertyService>();

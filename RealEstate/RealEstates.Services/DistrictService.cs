@@ -3,8 +3,10 @@ using RealEstates.Data;
 using RealEstates.Models;
 using RealEstates.Services.Contracts;
 using RealEstates.Services.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 
 namespace RealEstates.Services
 {
@@ -19,9 +21,9 @@ namespace RealEstates.Services
 
         public IEnumerable<DistrictVievModel> GetTopDistrictsByAveragePrice(int count = Constants.DistinctsCount)
         {
-            return _db.Districts
+            return this._db.Districts
                 .OrderByDescending(d => d.Properties.Average(p => p.Price))
-                .Select(d => MapDistrictViewModel(d))
+                .Select(MapDistrictViewModel())
                 .Take(count)
                 .ToList();
         }
@@ -30,14 +32,14 @@ namespace RealEstates.Services
         {
             return this._db.Districts
                 .OrderByDescending(d => d.Properties.Count)
-                .Select(d => MapDistrictViewModel(d))
+                .Select(MapDistrictViewModel())
                 .Take(count)
                 .ToList();
         }
 
-        private static DistrictVievModel MapDistrictViewModel(District d)
+        private static Expression<Func<District, DistrictVievModel>> MapDistrictViewModel()
         {
-            return new DistrictVievModel
+            return d => new DistrictVievModel
             {
                 Name = d.Name,
                 AveragePrice = d.Properties.Average(p => p.Price),

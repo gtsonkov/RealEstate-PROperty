@@ -1,0 +1,14 @@
+﻿
+@{
+    ViewData["Title"] = "Search";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Search property by price</h1>
+<form method="get" action="/Properties/DoSearch" class="col-md-6">
+    <div> Min. price: <input name="minPrice" class="form-control" /></div>
+    <hr />
+    <div>Max. price: <input name="maxPrice" class="form-control" /></div>
+    <hr />
+    <div><input type="submit" value="Search" class="btn btn-primary" /></div>
+</form>
