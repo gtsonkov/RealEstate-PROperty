@@ -13,7 +13,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RealEstates.Models", "RealE
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RealEstates.Data", "RealEstates.Data\RealEstates.Data.csproj", "{D64CE019-5284-4F10-8E21-39217760C7F4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RealEstates.Common", "RealEstates.Common\RealEstates.Common.csproj", "{6D4C6F23-13C0-4DF3-9C41-3F2BEE352BB7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RealEstates.Common", "RealEstates.Common\RealEstates.Common.csproj", "{6D4C6F23-13C0-4DF3-9C41-3F2BEE352BB7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RealEstates.Web", "RealEstates.Web\RealEstates.Web.csproj", "{DFF2D882-1D1A-4739-A63C-F36A0803C193}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -45,6 +47,10 @@ Global
 		{6D4C6F23-13C0-4DF3-9C41-3F2BEE352BB7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6D4C6F23-13C0-4DF3-9C41-3F2BEE352BB7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6D4C6F23-13C0-4DF3-9C41-3F2BEE352BB7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DFF2D882-1D1A-4739-A63C-F36A0803C193}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DFF2D882-1D1A-4739-A63C-F36A0803C193}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DFF2D882-1D1A-4739-A63C-F36A0803C193}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DFF2D882-1D1A-4739-A63C-F36A0803C193}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -10,15 +10,22 @@ namespace RealEstates.Services
 {
     public class PropertyService : IPropertiesService
     {
-        private RealEstateDbContext _db;
+        private readonly RealEstateDbContext _db;
+        private readonly List<District> _districts;
+        private readonly List<BuildingType> _buildingTypes;
+        private readonly List<PropertyType> _propertyTypes;
 
         public PropertyService(RealEstateDbContext dbContext)
         {
             this._db = dbContext;
+            this._districts = new List<District>();
+            this._buildingTypes = new List<BuildingType>();
+            this._propertyTypes = new List<PropertyType>();
         }
 
         public void Create(int size, int? floor, int? maxFloorCount, string district, string propertyType, string buildingType, int? year, int price)
         {
+            
 
             if (district == null)
             {
@@ -53,8 +60,7 @@ namespace RealEstates.Services
             #region District
             //Distrinct
 
-            var currDistrict = this._db.Districts
-                                        .FirstOrDefault(x => x.Name.Trim() == district.Trim());
+            var currDistrict = this._districts.FirstOrDefault(x => x.Name == district);
 
             if (currDistrict == null)
             {
@@ -62,6 +68,8 @@ namespace RealEstates.Services
                 {
                     Name = district,
                 };
+
+                this._districts.Add(currDistrict);
             }
 
             property.District = currDistrict;
@@ -70,7 +78,7 @@ namespace RealEstates.Services
             #region BuildingType
             //Building
 
-            var currBuildingType = this._db.BuildingTypes
+            var currBuildingType = this._buildingTypes
                                             .FirstOrDefault(x => x.Name.Trim() == buildingType.Trim());
 
             if (currBuildingType == null)
@@ -79,6 +87,8 @@ namespace RealEstates.Services
                 {
                     Name = buildingType
                 };
+
+                this._buildingTypes.Add(currBuildingType);
             }
 
             property.BuildingType = currBuildingType;
@@ -87,7 +97,7 @@ namespace RealEstates.Services
             #region PropertyType
             //PropertyTupe
 
-            var currPropertyType = this._db.PropertyTypes
+            var currPropertyType = this._propertyTypes
                                     .FirstOrDefault(x => x.Name.Trim() == propertyType.Trim());
 
             if (currPropertyType == null)
@@ -96,6 +106,8 @@ namespace RealEstates.Services
                 {
                     Name = propertyType
                 };
+
+                this._propertyTypes.Add(currPropertyType);
             }
 
             property.PropertyType = currPropertyType;
@@ -186,7 +198,7 @@ namespace RealEstates.Services
             {
                 BuildingType = x.BuildingType.Name,
                 District = x.District.Name,
-                Floor = (x.Floor ?? 0) + "/" + (x.TotalNumberOfFloors ?? 0),
+                Floor = (x.Floor ?? 0).ToString() + "/" + (x.TotalNumberOfFloors ?? 0).ToString(),
                 Price = x.Price,
                 Size = x.Size,
                 Year = x.Year,
